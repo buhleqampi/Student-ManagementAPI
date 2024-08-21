@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 
@@ -15,24 +16,24 @@ app.use((req, res, next) => {
   });
 
 
-  const connectionString = require("./config/db.config")
+  // const connectionString = require("./config/db.config")
 
   // // Connect to MongoDB
-  mongoose.connect(connectionString.url);
+  // mongoose.connect(connectionString.url);
   
-  const db = mongoose.connection;
+  // const db = mongoose.connection;
   
-  db.on("error", console.error.bind(console, "MongoDB connection error:"));
-  db.once("open", () => {
-    console.log("Connected to MongoDB");
-  });
+  // db.on("error", console.error.bind(console, "MongoDB connection error:"));
+  // db.once("open", () => {
+  //   console.log("Connected to MongoDB");
+  // });
 
   
 app.get("/", (req, res) => {
     res.status(200).send("The server is running.....");
   });
   
-  app.use('/email', contactRoutes);
+  // app.use('/email', contactRoutes);
   
   app.listen(port, () => {
     console.log("Listening @ port:", port);
