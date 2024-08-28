@@ -1,8 +1,14 @@
+// const http = require('http');
 const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
 const app = express();
+const cors = require('cors');
 const port = 3000;
+const studentRoutes= require('./routes/student_route');
+const educatorRoutes = require('./routes/educator_route');
+
+
+app.use('/students', studentRoutes);
+app.use('/educators', educatorRoutes);
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -15,25 +21,29 @@ app.use((req, res, next) => {
     next();
   });
 
-
-  // const connectionString = require("./config/db.config")
+const mongoose = require('mongoose');
 
   // // Connect to MongoDB
   // mongoose.connect(connectionString.url);
-  
-  // const db = mongoose.connection;
+
+    // const db = mongoose.connection;
   
   // db.on("error", console.error.bind(console, "MongoDB connection error:"));
   // db.once("open", () => {
   //   console.log("Connected to MongoDB");
   // });
 
+
+
+  // const connectionString = require("./config/db.config")
+
+  
+
   
 app.get("/", (req, res) => {
     res.status(200).send("The server is running.....");
   });
-  
-  // app.use('/email', contactRoutes);
+
   
   app.listen(port, () => {
     console.log("Listening @ port:", port);
