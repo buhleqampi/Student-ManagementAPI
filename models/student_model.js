@@ -8,6 +8,8 @@ const studentSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+
+  
 });
 
 const Data = mongoose.model('Data', studentSchema);
