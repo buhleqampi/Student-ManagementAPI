@@ -1,6 +1,18 @@
 const Student = require('../models/student_model');
 const mongoose = require('mongoose');
 
+
+
+exports.createStudent =  async (req, res) => {
+    const newStudent = new Student(req.body);
+    try {
+      const savedStudent = await newStudent.save();
+      res.json(savedStudent);
+    } catch (error) {
+      res.json({ message: error.message });
+    }
+  };
+
 exports.getAllStudents =  async (req, res) => {
   try {
     const students = await Student.find();
@@ -20,17 +32,6 @@ exports.getOneStudent =  async (req, res) => {
     res.json(student);
   } catch (error) {
     res.status(500).send({ message:"Could not fetch student" , error:error.message });
-  }
-};
-
-
-exports.createStudent =  async (req, res) => {
-  const newStudent = new Student(req.body);
-  try {
-    const savedStudent = await newStudent.save();
-    res.json(savedStudent);
-  } catch (error) {
-    res.json({ message: error.message });
   }
 };
 
