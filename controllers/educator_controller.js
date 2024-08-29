@@ -1,5 +1,4 @@
 const Educator = require('../models/educator_model');
-const mongoose = require('mongoose');
 
 
 exports.createEducator =  async (req, res) => {
