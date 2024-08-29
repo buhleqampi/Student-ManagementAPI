@@ -12,7 +12,7 @@ router.delete("/delete-all", studentController.deleteAllStudents);
 
 router.delete("/delete-one",studentController.deleteStudents);
 
-router.put("/update/:id", studentController, updateStudents);
+// router.put("/update/:id", studentController, updateStudents);
 
  
 module.exports = router;

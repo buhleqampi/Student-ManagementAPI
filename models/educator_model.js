@@ -10,6 +10,6 @@ const educatorSchema = new mongoose.Schema({
   },
 });
 
-const Educator = mongoose.model('Data', educatorSchema);
+const Educator = mongoose.model('Educator', educatorSchema);
 
 module.exports = Educator;

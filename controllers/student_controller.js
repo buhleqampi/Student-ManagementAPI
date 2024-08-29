@@ -34,7 +34,7 @@ exports.createStudent =  async (req, res) => {
   }
 };
 
-exports.updateStudent = async (req, res) => {
+exports.updateStudents = async (req, res) => {
   try {
     const updatedStudent = await Student.updateOne(
       { _id: req.params.id },
@@ -66,4 +66,4 @@ exports.deleteStudents = async (req, res) => {
     }
   };
 
-module.exports = router; 
+// module.exports = router; 
