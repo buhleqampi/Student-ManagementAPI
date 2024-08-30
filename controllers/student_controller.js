@@ -34,10 +34,7 @@ exports.getOneStudent =  async (req, res) => {
 
 exports.updateStudents = async (req, res) => {
   try {
-    const updatedStudent = await Student.updateOne(
-      { _id: req.params.id },
-      { $set: req.body }
-    );
+    const updatedStudent = await Student.updateOne({ _id: req.params.id });
     res.json(updatedStudent);
   } catch (error) {
     res.json({ message: error.message });
@@ -63,5 +60,3 @@ exports.deleteStudents = async (req, res) => {
       res.json({ message: error.message });
     }
   };
-
-// module.exports = router; 
