@@ -1,8 +1,5 @@
 const Student = require('../models/student_model');
 
-
-
-
 exports.createStudent =  async (req, res) => {
     const newStudent = new Student(req.body);
     try {
