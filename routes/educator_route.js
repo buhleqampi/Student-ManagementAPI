@@ -9,6 +9,7 @@ router.get("/get-all", educatorController.getAllEducators);
 
 router.get("/get-one/:id", educatorController.getEducator);
 
+router.put("/update/:id", educatorController.updateEducator);
 
  
 module.exports = router;

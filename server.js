@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = 4000;
+const port = 5000;
 const studentRoutes= require('./routes/student_route');
 const educatorRoutes = require('./routes/educator_route');
 

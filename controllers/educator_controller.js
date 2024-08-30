@@ -34,18 +34,14 @@ exports.getEducator =  async (req, res) => {
 };
 
 
-
-// exports.updateStudent = async (req, res) => {
-//   try {
-//     const updatedStudent = await Student.updateOne(
-//       { _id: req.params.id },
-//       { $set: req.body }
-//     );
-//     res.json(updatedStudent);
-//   } catch (error) {
-//     res.json({ message: error.message });
-//   }
-// };
+exports.updateEducator = async (req, res) => {
+  try {
+    const updatedEducator = await Educator.updateOne({ _id: req.params.id });
+    res.json(updatedEducator);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
 
 
 // exports.deleteAllStudents = async (req, res) => {
