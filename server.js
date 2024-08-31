@@ -2,12 +2,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
 const port = 5000;
-const studentRoutes= require('./routes/student_route');
-const educatorRoutes = require('./routes/educator_route');
-
 
 require('dotenv').config()
+
+const studentRoutes= require('./routes/student_route');
+const educatorRoutes = require('./routes/educator_route');
 
 app.use('/students', studentRoutes);
 app.use('/educators', educatorRoutes);
@@ -23,36 +24,27 @@ app.use((req, res, next) => {
     next();
   });
 
-const mongoose = require('mongoose');
-
   // Connect to MongoDB
 
-  
-  const connectionString = require("./config/config");
+const connectionString = require("./config/config");
+mongoose.connect(connectionString.url);
 
-  mongoose.connect(connectionString.url);
-
-    const db = mongoose.connection;
+const db = mongoose.connection;
   
-  db.on("error", console.error.bind(console, "MongoDB connection error:"));
-  db.once("open", () => {
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
     console.log("Connected to MongoDB");
   });
 
-
-
-  
-
-  
 app.get("/", (req, res) => {
     res.status(200).send("The server is running.....");
   });
 
   
-  app.listen(port, () => {
+app.listen(port, () => {
     console.log("Listening @ port:", port);
   });
 
 
   
-  module.exports = app;
+module.exports = app;
