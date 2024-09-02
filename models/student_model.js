@@ -1,27 +1,24 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-//   id: {
-//     type: String,
-//     required: true,
-//   },
-  fname: {
+
+  studentId: {
     type: String,
  
   },
-  lname: {
+  fullName: {
     type: String,
   
   },
-  age: {
+  yearOfStudy: {
     type: String,
 
   },
-  address: {
+  marks: {
   type: String,
   },
 
-  grade: {
+  average: {
     type: String,
 
   },
@@ -29,10 +26,10 @@ const studentSchema = new mongoose.Schema({
 //     type: String,
 //     required:true,
 //   },
-  subject: {
-    type: String,
+  // subject: {
+  //   type: String,
  
-  },
+  // },
 //   average: {
 //     type: String,
 //     required:true,
