@@ -1,24 +1,23 @@
 // const http = require('http');
+const { connectionString } = require('./config/config')
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const port = 5000;
 
-require('dotenv').config()
+
 
 const studentRoutes= require('./routes/student_route');
 const educatorRoutes = require('./routes/educator_route');
 const autheticationRoutes = require('./routes/auth_route');
 
-app.use('/students', studentRoutes);
-app.use('/educators', educatorRoutes);
-app.use('/auth', autheticationRoutes);
-
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+
+app.use(cors());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
@@ -28,7 +27,6 @@ app.use((req, res, next) => {
 
   // Connect to MongoDB
 
-const connectionString = require("./config/config");
 mongoose.connect(connectionString.url);
 
 const db = mongoose.connection;
@@ -43,6 +41,10 @@ app.get("/", (req, res) => {
   });
 
   
+app.use('/students', studentRoutes);
+app.use('/educators', educatorRoutes);
+app.use('/auth', autheticationRoutes);
+
 app.listen(port, () => {
     console.log("Listening @ port:", port);
   });
