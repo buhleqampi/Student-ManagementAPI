@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
 
-  studentId: {
-    type: String,
+  // _id: {
+  //   type: String,
  
-  },
+  // },
   fullName: {
     type: String,
   
@@ -18,7 +18,7 @@ const studentSchema = new mongoose.Schema({
   type: String,
   },
 
-  average: {
+  average: {                                                                                
     type: String,
 
   },

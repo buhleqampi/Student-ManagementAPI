@@ -37,14 +37,15 @@ db.once("open", () => {
 });
 
 
+app.get("/", (req, res) => {
+  res.status(200).send("The server is running.....");
+});
+
 app.use("/students", studentRoutes);
 app.use("/educators", educatorRoutes);
 app.use("/auth", autheticationRoutes);
 
 
-app.get("/", (req, res) => {
-  res.status(200).send("The server is running.....");
-});
 
 app.listen(port, () => {
   console.log("Listening @ port:", port);

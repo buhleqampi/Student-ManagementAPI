@@ -1,8 +1,8 @@
 const Student = require('../models/student_model');
 
 exports.createStudent =  async (req, res) => {
-    const newStudent = new Student(req.body);
     try {
+      const newStudent = new Student(req.body);
       const savedStudent = await newStudent.save();
       res.json(savedStudent);
     } catch (error) {
