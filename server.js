@@ -9,9 +9,11 @@ require('dotenv').config()
 
 const studentRoutes= require('./routes/student_route');
 const educatorRoutes = require('./routes/educator_route');
+const autheticationRoutes = require('./routes/auth_route');
 
 app.use('/students', studentRoutes);
 app.use('/educators', educatorRoutes);
+app.use('/auth', autheticationRoutes);
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
