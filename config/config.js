@@ -1,5 +1,5 @@
 require("dotenv").config();
- const connectionString = {
+const connectionString = {
   url: process.env.URL,
 };
 
