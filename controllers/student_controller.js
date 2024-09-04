@@ -52,7 +52,7 @@ exports.deleteAllStudents = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .send({ message: "Could not delete recipes", error: error.message });
+      .send({ message: "Could not delete", error: error.message });
   }
 };
 
