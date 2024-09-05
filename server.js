@@ -8,6 +8,7 @@ const port = 5000;
 const studentRoutes = require("./routes/student_route");
 const educatorRoutes = require("./routes/educator_route");
 const autheticationRoutes = require("./routes/auth_route");
+const contactRoutes = require('./routes/contact_route');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,6 +45,8 @@ app.get("/", (req, res) => {
 app.use("/students", studentRoutes);
 app.use("/educators", educatorRoutes);
 app.use("/auth", autheticationRoutes);
+app.use('/email', contactRoutes);
+
 
 
 
