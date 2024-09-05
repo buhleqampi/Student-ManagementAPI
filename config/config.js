@@ -1,10 +1,10 @@
 require("dotenv").config();
+const nodemailer = require('nodemailer');
+
 
 const connectionString = {
   url: process.env.URL,
 };
-
-const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
   host: process.env.HOST,
@@ -17,3 +17,6 @@ const transporter = nodemailer.createTransport({
 });
 
 module.exports = { connectionString, transporter  };
+
+
+

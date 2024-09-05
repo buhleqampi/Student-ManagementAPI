@@ -10,7 +10,7 @@ const handleEmail = async (subject,  email, message) => {
             html: `<b>Email: ${email}</b><br> ${message}`,
         };
         await transporter.sendMail(mailDetails);
-
+        console.log(mailDetails)
     } catch(error){
         throw new Error (error.message);
     }
