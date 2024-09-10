@@ -14,7 +14,7 @@ exports.signup = async (req, res) => {
       return;
     }
 
-    let existingEducator = await User.findOne({ email });
+    let existingEducator = await Educator.findOne({ email });
 
     if (existingEducator) {
       return res.status(400).send({ message: "User already exists" });
@@ -29,7 +29,7 @@ exports.signup = async (req, res) => {
     await educator.save();
 
     console.log(educator);
-    return res.status(200).send({ message: "User created successfully", user });
+    return res.status(200).send({ message: "User created successfully", educator });
   } catch (err) {
     console.error("Signup failed:", err);
     res.status(500).send("Signup failed");

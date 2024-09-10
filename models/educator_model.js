@@ -8,9 +8,17 @@ const educatorSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  roles: {
+    type: [{
+        type: String,
+        enum: ['user', 'admin']
+    }],
+    default: ['admmin']
+},
+
 });
 
-const Educator = mongoose.model("Educator", educatorSchema);
+const Educator = mongoose.model('admin', educatorSchema);
 
 // Educator.insertMany([{name:"Ms Mary Sobekwa",description:"Teaches grade 11& 12 pupils. Specializes in Mathematics and Life Sciences."}])
 

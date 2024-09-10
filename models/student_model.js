@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema({
-  // _id: {
-  //   type: String,
-
-  // },
   fullName: {
     type: String,
   },
@@ -18,6 +14,14 @@ const studentSchema = new mongoose.Schema({
   average: {
     type: String,
   },
+  roles: {
+    type: [{
+        type: String,
+        enum: ['user', 'admin']
+    }],
+    default: ['user']
+},
+
   //   stream: {
   //     type: String,
   //     required:true,
