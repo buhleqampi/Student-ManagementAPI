@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../model/user_model");
+const Educator = require("../models/educator_model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { request } = require("express");
@@ -14,21 +14,21 @@ exports.signup = async (req, res) => {
       return;
     }
 
-    let existingUser = await User.findOne({ email });
+    let existingEducator = await User.findOne({ email });
 
-    if (existingUser) {
+    if (existingEducator) {
       return res.status(400).send({ message: "User already exists" });
     }
 
-    const user = new User({
+    const educator = new Educator({
       email: email,
       password: await bcrypt.hash(password, 10),
       roles: roles || ["user"],
     });
 
-    await user.save();
+    await educator.save();
 
-    console.log(user);
+    console.log(educator);
     return res.status(200).send({ message: "User created successfully", user });
   } catch (err) {
     console.error("Signup failed:", err);
@@ -44,9 +44,9 @@ exports.login = async (req, res) => {
       return res.status(400).send("All input is required");
     }
 
-    const user = await User.findOne({ email });
+    const educator = await Educator.findOne({ email });
 
-    if (!user) {
+    if (!educator) {
       return res.status(404).send({ message: "User Not found." });
     }
 
@@ -60,7 +60,7 @@ exports.login = async (req, res) => {
     }
 
     const access_token = jwt.sign(
-      { user_id: user._id, user_email: user.email },
+      { educator_id: educator._id, educator_email: educator.email },
       process.env.JWT_SECRET_KEY,
       {
         algorithm: "HS256",
@@ -70,7 +70,7 @@ exports.login = async (req, res) => {
 
     res
       .status(200)
-      .send({ id: user._id, email: user.email, token: access_token });
+      .send({ id: educator._id, email: educator.email, token: access_token });
   } catch (err) {
     console.error("Login failed:", err);
     res.status(500).send("Login failed");

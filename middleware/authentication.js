@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/student_model");
+const Educator = require("../models/educator_model");
 
 require("dotenv");
 
@@ -17,16 +17,16 @@ let verifyToken = async (req, res, next) => {
       });
     }
     console.log(decoded);
-    req.userId = decoded.user_id;
+    req.userId = decoded.educator_id;
 
     next();
   });
 };
 
 let isAdmin = async (req, res, next) => {
-  const user = await User.findById(req.userId);
+  const educator = await Educator.findById(req.educatorId);
 
-  if (user && user.roles.includes("admin")) {
+  if (educator && educator.roles.includes("admin")) {
     next();
   } else {
     res
