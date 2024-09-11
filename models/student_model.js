@@ -20,20 +20,7 @@ const studentSchema = new mongoose.Schema({
         enum: ['user', 'admin']
     }],
     default: ['user']
-},
-
-  //   stream: {
-  //     type: String,
-  //     required:true,
-  //   },
-  // subject: {
-  //   type: String,
-
-  // },
-  //   average: {
-  //     type: String,
-  //     required:true,
-  //   }
+}
 });
 
 const Student = mongoose.model("Student", studentSchema);
