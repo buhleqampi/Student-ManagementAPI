@@ -13,7 +13,7 @@ const educatorSchema = new mongoose.Schema({
         type: String,
         enum: ['user', 'admin']
     }],
-    default: ['admmin']
+    default: ['admin']
 },
 
 });
