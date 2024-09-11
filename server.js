@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const port = 5000;
+const port = 3000;
 
 const studentRoutes = require("./routes/student_route");
 const educatorRoutes = require("./routes/educator_route");
