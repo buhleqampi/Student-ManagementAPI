@@ -9,6 +9,10 @@ const studentRoutes = require("./routes/student_route");
 const educatorRoutes = require("./routes/educator_route");
 const autheticationRoutes = require("./routes/auth_route");
 const contactRoutes = require('./routes/contact_route');
+const booksRoutes = require('./routes/book_route');
+const tutorialsRoutes = require('./routes/tutorials_route');
+const assessmentRoutes = require('./routes/assessment_route');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -46,6 +50,9 @@ app.use("/students", studentRoutes);
 app.use("/educators", educatorRoutes);
 app.use("/auth", autheticationRoutes);
 app.use('/email', contactRoutes);
+app.use('/books', booksRoutes);
+app.use('/tutorial', tutorialsRoutes);
+app.use('/assessment', assessmentRoutes);
 
 
 
