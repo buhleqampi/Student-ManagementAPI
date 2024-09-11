@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const port = 3000;
+const fileUpload = require('express-fileupload');
 
 const studentRoutes = require("./routes/student_route");
 const educatorRoutes = require("./routes/educator_route");
@@ -16,6 +17,7 @@ const assessmentRoutes = require('./routes/assessment_route');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(fileUpload());
 
 app.use(cors());
 app.use((req, res, next) => {
@@ -53,6 +55,8 @@ app.use('/email', contactRoutes);
 app.use('/books', booksRoutes);
 app.use('/tutorial', tutorialsRoutes);
 app.use('/assessment', assessmentRoutes);
+
+
 
 
 

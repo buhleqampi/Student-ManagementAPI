@@ -1,10 +1,12 @@
 const { handleEmail } = require("../helpers/handle_email");
 
 async function  sendMessage(req,res){
-    const { email, subject , message } = req.body
+    const { email, subject , message, file } = req.body
+    console.log(file, req.files.file )
+    const fileUpload = req.files.file
 
     try {
-        await handleEmail ( email, subject, message);
+        await handleEmail ( email, subject, message , fileUpload);
         res.status(200).send({ response: "Email sent!"});
     }
     catch(error){
