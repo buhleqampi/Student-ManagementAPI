@@ -3,8 +3,6 @@ const { transporter } = require('../config/config');
 
 const handleEmail = async ( email, subject,  message , file) => {
     try {
-
-         const fileContent = Buffer.from(file.data).toString('base64')
            
         const mailDetails = {
             from: process.env.EMAIL,
@@ -13,7 +11,9 @@ const handleEmail = async ( email, subject,  message , file) => {
             html: `<b>Email: ${email}</b><br> ${message}<p></p>`,
             attachments: [
                 {
-                    content: `${fileContent}`
+                    filename:file.name,
+                    content:file.data,
+                    contentType: file.mimetype
                 }
             ]
         };
