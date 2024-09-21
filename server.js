@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const port = 3000;
+const port = 5000;
 const fileUpload = require('express-fileupload');
 
 const studentRoutes = require("./routes/student_route");
@@ -13,6 +13,7 @@ const contactRoutes = require('./routes/contact_route');
 const booksRoutes = require('./routes/book_route');
 const tutorialsRoutes = require('./routes/tutorials_route');
 const assessmentRoutes = require('./routes/assessment_route');
+const enrollmentRoutes = require('./routes/enrollment_route');
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -55,6 +56,8 @@ app.use('/email', contactRoutes);
 app.use('/books', booksRoutes);
 app.use('/tutorial', tutorialsRoutes);
 app.use('/assessment', assessmentRoutes);
+app.use('/enrollment', enrollmentRoutes);
+
 
 
 
